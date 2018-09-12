@@ -13,7 +13,9 @@ public class AccountWithThread {
     }
     private static class AddAPennyTask extends Thread{
         public void run(){
-            account.deposit(1);
+            synchronized(account){
+                account.deposit(1);
+            }
         }
     }
     private static class Account{
